@@ -13,6 +13,13 @@
   }
 }
 
+.fp-logo-web{
+  width: 7rem;
+}
+.imagen-NavBar{
+  width: 4rem;    
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
