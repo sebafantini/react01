@@ -1,9 +1,10 @@
 
 import './App.css';
-import './App.css';
+import Formulario from './components/Formulario/Formulario';
 
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import Titulo from './components/Titulo/Titulo';
 
 
 
@@ -11,12 +12,13 @@ function App() {
   console.log('Hola')
   const estilos = {fontSize : 10}
   const nombre = 'sebas'
+  const tit = 'Soy el titulo de App'
   return (
     <div className="App">      
       <Navbar/>      
+      <Titulo titulo={titulo=tit}/>
+      <Formulario/>
     </div>
-    //<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    //<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   );
 }
 
