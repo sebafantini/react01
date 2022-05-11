@@ -1,12 +1,13 @@
 import React from 'react'
 import Titulo from '../Titulo/Titulo'
 
-export default function Formulario() {
+export default function Formulario({saludo, place}) {
   return (
-    <div>
-        <Titulo titulo='Soy el titulo del imput' subTit='Soy el Subtitulo del input'/>
-        <input type="text"/>
-        <button>Saludo</button>
+    <div>        
+        <form>
+            <input type="text" placeholder={place}/>
+            <button onClick={saludo}>Saludo</button>
+        </form>
     </div>
     
   )

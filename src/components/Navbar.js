@@ -1,3 +1,4 @@
+import CartWidget from "./CartWidget/CartWidget"
 
 
 
@@ -14,31 +15,33 @@ function Navbar(){
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Nuestros Locales</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">Platos a base de Semillas</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#">Menu Ejecutivo</a>
-                    </li>
-                    <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Bebidas
-                    </a>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a className="dropdown-item" href="#">Bebidas sin Alcohol</a></li>
-                        <li><a className="dropdown-item" href="#">Cervezas</a></li>
-                        <li><a className="dropdown-item" href="#">Bebidas Espirituosas</a></li>
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                        <a className="nav-link active" aria-current="page" href="#">Nuestros Locales</a>
+                        </li>
+                        <li className="nav-item">
+                        <a className="nav-link" href="#">Platos a base de Semillas</a>
+                        </li>
+                        <li className="nav-item">
+                        <a className="nav-link" href="#">Menu Ejecutivo</a>
+                        </li>
+                        <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bebidas
+                        </a>
+                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a className="dropdown-item" href="#">Bebidas sin Alcohol</a></li>
+                            <li><a className="dropdown-item" href="#">Cervezas</a></li>
+                            <li><a className="dropdown-item" href="#">Bebidas Espirituosas</a></li>
+                        </ul>
+                        </li>
                     </ul>
-                    </li>
-                </ul>
                 </div>
+                <CartWidget/>  
+                
+
             </div>
-            </nav>    
-        
+            </nav>                   
         </div>
     )
 }
