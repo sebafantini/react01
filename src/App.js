@@ -7,6 +7,8 @@ import FormContainer from './components/ComponenteContenedor/FormContainer';
 import Formulario from './components/Formulario/Formulario';
 
 import Header from './components/Header';
+import Item from './components/Item/Item';
+import ItemList from './components/ItemList/ItemList';
 
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Navbar from './components/Navbar';
@@ -47,7 +49,7 @@ function App() {
             <Titulo titulo={tit} subTit={subTit}/>      
             <FormContainer/>      
             <ItemListContainer greeting ='Hola, soy una prop'/>
-
+            
         
       </div>
     
