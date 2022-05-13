@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import CartWidget from './components/CartWidget/CartWidget';
 import FormContainer from './components/ComponenteContenedor/FormContainer';
@@ -36,14 +37,20 @@ function App() {
   }
 
   return (
-    <div className="App">      
-      <Navbar/>      
-      <Titulo titulo={tit} subTit={subTit}/>      
-      <FormContainer/>
     
-      <ItemListContainer greeting ='Hola, soy una prop'/>
+    
+      <div className="App">      
+        <Navbar/>      
+        
+            
+            
+            <Titulo titulo={tit} subTit={subTit}/>      
+            <FormContainer/>      
+            <ItemListContainer greeting ='Hola, soy una prop'/>
 
-    </div>
+        
+      </div>
+    
   );
 }
 
