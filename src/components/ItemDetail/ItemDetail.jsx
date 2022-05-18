@@ -3,35 +3,34 @@ import { useEffect, useState } from "react"
 import {Button} from 'react-bootstrap';
 import {Card} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
+import {Spinner} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
+import { getFetch } from '../helpers/getFech';
 
-const productos = [
-    { id: '1', title: 'Curry de Pollo', price: 1200, pictureUrl:'curry_pollo.JPG'},
-  ]
 
-const getFetch = new Promise((resolve)=>{
-    setTimeout(()=>{
-        resolve( productos )        
-    }, 2000)
-})
 
-export default function ItemDetail() {
+export default function ItemDetail({detalleId = '1'}) {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-
+    
     useEffect(() => {
-        getFetch  // fetch llamada a una api  
-        .then(respuesta=> setProductos(respuesta))
+        getFetch()  // fetch llamada a una api  
+        .then(respuesta=> setProductos(respuesta.filter((prods) => prods.id === detalleId)))
         .catch((err)=> console.log(err))
         .finally(()=>setLoading(false))     
-    }, [])
+    }, [detalleId])
     
-    console.log(productos)
+    console.log('en ItemDetail')
+    console.log(detalleId)
     
     return (
     <div>
            { loading ? 
-                <h2>Cargando...</h2> 
+                <div>
+                    <h2>Cargando...</h2> 
+                    <Spinner animation="border" variant="primary" />
+                </div>
+                
                 : 
                 productos.map((prod) =>  
                                 
@@ -44,12 +43,17 @@ export default function ItemDetail() {
                             </Card.Text>
 
                             <Card.Text>
-                            Precio: ${prod.price}
+                                Calorías [Kcal]: {prod.kcal}
+                            </Card.Text>
+
+                            <Card.Text>
+                                Bebida en maridaje: {prod.maridaje}
+                            </Card.Text>
+
+                            <Card.Text>
+                                Precio: ${prod.price}
                             </Card.Text>
                                                                 
-                            <Button variant="primary" size="lg" >
-                                Detalle
-                            </Button>                
                         </Card.Body>
                     </Card>
                 

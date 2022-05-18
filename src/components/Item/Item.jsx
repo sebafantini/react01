@@ -4,6 +4,7 @@ import {Button} from 'react-bootstrap';
 import {Card} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Item({id='1', title='Cuscus de Pollo', price='200', pictureUrl='cuscus.jpg'}) {
   return (
@@ -18,10 +19,12 @@ export default function Item({id='1', title='Cuscus de Pollo', price='200', pict
                     <Card.Text>
                        Precio: ${price}
                     </Card.Text>
-                                                        
-                    <Button variant="primary" size="lg" >
-                        Detalle
-                    </Button>                
+
+                    <Link to ={`/detalle/${id}`}>
+                        <Button variant="primary" size="lg" >                        
+                            Detalle
+                        </Button>                
+                    </Link>                                    
                 </Card.Body>
             </Card>
   )

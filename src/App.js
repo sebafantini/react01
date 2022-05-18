@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Cart from './components/Cart/Cart';
 import CartWidget from './components/CartWidget/CartWidget';
 import FormContainer from './components/ComponenteContenedor/FormContainer';
 import Formulario from './components/Formulario/Formulario';
@@ -40,20 +41,23 @@ function App() {
   }
 
   return (
+      <BrowserRouter>
+        <div className="App">      
+          <Navbar/>      
     
-    
-      <div className="App">      
-        <Navbar/>      
-        
-            
-            
-            <Titulo titulo={tit} subTit={subTit}/>      
-            <FormContainer/>      
-            <ItemListContainer greeting ='Hola, soy una prop'/>
-            <ItemDetailContainer/>
-        
-      </div>
-    
+          <Routes>
+              {/*<Titulo titulo={tit} subTit={subTit}/>      */}
+              {/*<FormContainer/>      */}      
+              <Route path='/' element={<ItemListContainer greeting ='Hola, soy una prop'/>} />
+              <Route path='/categorias/:categoriaId' element={<ItemListContainer greeting ='Hola, soy una prop'/>} />
+              <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>} />
+              <Route path='/cart' element={<Cart/>} />
+              
+              <Route path='/*' element={<Navigate to ='/' replace/>} />
+          </Routes>
+
+        </div>      
+      </BrowserRouter>    
   );
 }
 

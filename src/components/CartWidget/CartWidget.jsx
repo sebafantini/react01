@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './CartWidget.css'
 
 export default function CartWidget() {
   return (    
     <>
-      <a className="navbar-brand" href="#">
-        <img class="cartIcon" src="cart.png" alt="cart"  ></img>
-      </a>
+      <Link to='/cart'>
+        <img class="cartIcon" src="/cart.png" alt="cart"  ></img>
+      </Link>
     </>
 
   )
