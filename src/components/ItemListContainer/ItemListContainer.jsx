@@ -14,10 +14,12 @@ export default function ItemListContainer({greeting}) {
       <h3>Este es el ItemListContainer </h3>
       <h2>{greeting}</h2>
       <ItemList/>
-      {/*
+      {
+      /*
         <h3>Calculo pedido:</h3>
         <ItemCount stockDisponible={8} cantidadInicial={1} onAdd={onAdd}/>
-        */}
+        */
+        }
     </div>
   )
 }
