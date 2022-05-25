@@ -5,14 +5,21 @@ import {Card} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import {Spinner} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
+import BuyButtons from '../BuyButtons/BuyButtons';
 import { getFetch } from '../helpers/getFech';
+import ItemCount from '../ItemCount/ItemCount';
 
 
 
 export default function ItemDetail({detalleId = '1'}) {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-    
+    const [inputType, setInputType] = useState('itemCount');
+
+    function onAdd(quantity) {        
+        setInputType('buyButtons');
+    }
+
     useEffect(() => {
         getFetch()  // fetch llamada a una api  
         .then(respuesta=> setProductos(respuesta.filter((prods) => prods.id === detalleId)))
@@ -53,7 +60,10 @@ export default function ItemDetail({detalleId = '1'}) {
                             <Card.Text>
                                 Precio: ${prod.price}
                             </Card.Text>
-                                                                
+                            {inputType === 'itemCount' ?
+                                <ItemCount stockDisponible={5} cantidadInicial={1} onAdd={onAdd}/>:
+                                <BuyButtons/>}                                                        
+
                         </Card.Body>
                     </Card>
                 
