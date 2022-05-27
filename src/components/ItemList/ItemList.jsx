@@ -1,7 +1,8 @@
 import React from 'react'
 import Item from '../Item/Item'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import {Spinner} from 'react-bootstrap';
+import {doc, getDoc, getDocs, getFirestore} from 'firebase/firestore';
 import { getFetch } from '../helpers/getFech'
 
 
@@ -23,7 +24,22 @@ const getFetch = new Promise((resolve)=>{
 export default function ItemList({categoriaId}) {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
+    //const [producto, setProducto] = useState([])
     
+ //   useEffect(() =>{
+//        const db = getFirestore()
+//        const dbQuery = doc(db, 'items', 'HgyBccXeLc0tAov7hQR3')
+//        getDoc(dbQuery)
+//        .then(resp => setProducto({id: resp.id, ...resp.data() }))
+//    },[])
+
+
+//    useEffect(() =>{
+//        const db = getFirestore()
+        //const dbQueryCollection = doc(db, 'items')
+        //getDocs(dbQueryCollection)        
+        //.then(resp => setProductos( resp.docs.map(iten => ({id: resp.id, ...resp.data() })) ))
+    //},[])
 
     useEffect(() => {
         if (categoriaId) {
@@ -42,7 +58,7 @@ export default function ItemList({categoriaId}) {
 
     console.log('En item list')
     console.log(categoriaId)
-
+    //console.log(producto)
     return (
 
     <div class="flex-direction: row">
@@ -55,7 +71,8 @@ export default function ItemList({categoriaId}) {
                     <Spinner animation="border" variant="primary" />
                 </div>
                 : 
-            productos.map((prod) =>  <Item id={prod.id} title={prod.title} price={prod.price} pictureUrl={prod.pictureUrl}/>  )
+            //productos.map((prod) =>  <Item id={prod.id} title={prod.title} price={prod.price} pictureUrl={prod.pictureUrl}/>  )
+            productos.map((prod) =>  <Item key={prod.id} prod={prod}/>  )
                         
             }
 

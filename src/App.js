@@ -1,8 +1,8 @@
 
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Cart from './components/Cart/Cart';
+
 import CartWidget from './components/CartWidget/CartWidget';
 import FormContainer from './components/ComponenteContenedor/FormContainer';
 import Formulario from './components/Formulario/Formulario';
@@ -15,6 +15,9 @@ import ItemList from './components/ItemList/ItemList';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Navbar from './components/Navbar';
 import Titulo from './components/Titulo/Titulo';
+import Cart from './components/Cart/Cart';
+import CartContextProvider from './context/CartContext';
+
 
 
 
@@ -31,7 +34,6 @@ function App() {
   const [fecha, setFecha] =useState(Date());
 
 
-
   function contador() {
     //count++;
     setCount(count+1);
@@ -41,22 +43,25 @@ function App() {
   }
 
   return (
+      
       <BrowserRouter>
-        <div className="App">      
-          <Navbar/>      
-    
-          <Routes>
-              {/*<Titulo titulo={tit} subTit={subTit}/>      */}
-              {/*<FormContainer/>      */}      
-              <Route path='/' element={<ItemListContainer greeting ='Hola, soy una prop'/>} />
-              <Route path='/categorias/:categoriaId' element={<ItemListContainer greeting ='Hola, soy una prop'/>} />
-              <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>} />
-              <Route path='/cart' element={<Cart/>} />
-              
-              <Route path='/*' element={<Navigate to ='/' replace/>} />
-          </Routes>
+        <CartContextProvider>
+          <div className="App">      
+            <Navbar/>      
+      
+            <Routes>
+                {/*<Titulo titulo={tit} subTit={subTit}/>      */}
+                {/*<FormContainer/>      */}      
+                <Route path='/' element={<ItemListContainer greeting ='Hola, soy una prop'/>} />
+                <Route path='/categorias/:categoriaId' element={<ItemListContainer greeting ='Hola, soy una prop'/>} />
+                <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>} />
+                <Route path='/cart' element={<Cart/>} />
+                
+                <Route path='/*' element={<Navigate to ='/' replace/>} />
+            </Routes>
 
-        </div>      
+          </div>              
+        </CartContextProvider>
       </BrowserRouter>    
   );
 }

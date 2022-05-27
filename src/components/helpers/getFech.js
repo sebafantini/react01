@@ -11,6 +11,15 @@ const productos = [
                 const query = category ? productos.filter(producto => producto.category == category ) : productos                                  
                 resolve( query )                           
             }, 2000)
+        })                    
+  }
+
+  export const getFetchFind = (id) => {
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+                const query = id ? productos.find(producto => producto.id === id ) : productos                                  
+                resolve( query )                           
+            }, 2000)
         })            
     
-}
+  }

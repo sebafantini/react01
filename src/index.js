@@ -7,8 +7,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import getFirestoreApp from './firebase/config';
 
-
+getFirestoreApp();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
