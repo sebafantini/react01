@@ -2,7 +2,7 @@ import React from 'react'
 import Item from '../Item/Item'
 import { useEffect, useState, useContext } from "react"
 import {Spinner} from 'react-bootstrap';
-import {doc, getDoc, getDocs, getFirestore} from 'firebase/firestore';
+import {collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore';
 import { getFetch } from '../helpers/getFech'
 
 
@@ -26,34 +26,66 @@ export default function ItemList({categoriaId}) {
     const [loading, setLoading] = useState(true)
     //const [producto, setProducto] = useState([])
     
- //   useEffect(() =>{
-//        const db = getFirestore()
-//        const dbQuery = doc(db, 'items', 'HgyBccXeLc0tAov7hQR3')
-//        getDoc(dbQuery)
-//        .then(resp => setProducto({id: resp.id, ...resp.data() }))
-//    },[])
-
-
 //    useEffect(() =>{
 //        const db = getFirestore()
-        //const dbQueryCollection = doc(db, 'items')
-        //getDocs(dbQueryCollection)        
-        //.then(resp => setProductos( resp.docs.map(iten => ({id: resp.id, ...resp.data() })) ))
-    //},[])
+//        const dbQuery = doc(db, 'items', 'tt0KDC4mcytJm1IF73Ht')
+//        getDoc(dbQuery)
+//        .then(resp => setProductos({id: resp.id, ...resp.data() }))
+//        .catch((err)=> console.log(err))
+//        .finally(()=>setLoading(false))           
+//    },[])
 
-    useEffect(() => {
-        if (categoriaId) {
-            getFetch()  // fetch llamada a una api  
-            .then(respuesta=> setProductos(respuesta.filter((prods) => prods.category === categoriaId)))
-            .catch((err)=> console.log(err))
-            .finally(()=>setLoading(false))                             
-        } else {
-            getFetch()  // fetch llamada a una api  
-            .then(respuesta=> setProductos(respuesta))
-            .catch((err)=> console.log(err))
-            .finally(()=>setLoading(false))                 
-        }
-    }, [categoriaId])
+        
+        useEffect(() => {
+            const db = getFirestore();
+            const queryCollection = collection(db, 'items');
+            console.log(categoriaId)
+            if (!categoriaId) {
+                getDocs(queryCollection)
+                .then(resp => resp.docs.map(el => ({id: el.id, ...el.data()})))
+                .then(data => data.sort((a, b) => {
+                    if (a.category > b.category) {
+                        return 1;
+                    }
+                    if (a.category < b.category) {
+                        return -1;
+                    }
+                    return 0;
+                }))
+                .then(sorted => setProductos(sorted))
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+            } else {
+                const queryCollectionFilter = query(queryCollection, where('category','==',categoriaId));
+                getDocs(queryCollectionFilter)
+                .then(resp => setProductos(resp.docs.map(el => ({id: el.id, ...el.data()}))))
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+            }
+        },[categoriaId]);
+
+
+
+    // useEffect(() =>{
+    //     const db = getFirestore()
+    //     const dbQueryCollection = doc(db, 'items')
+    //     getDocs(dbQueryCollection)        
+    //     .then(resp => setProductos( resp.docs.map(iten => ({id: resp.id, ...resp.data() })) ))
+    // },[])
+
+    // useEffect(() => {
+    //     if (categoriaId) {
+    //         getFetch()  // fetch llamada a una api  
+    //         .then(respuesta=> setProductos(respuesta.filter((prods) => prods.category === categoriaId)))
+    //         .catch((err)=> console.log(err))
+    //         .finally(()=>setLoading(false))                             
+    //     } else {
+    //         getFetch()  // fetch llamada a una api  
+    //         .then(respuesta=> setProductos(respuesta))
+    //         .catch((err)=> console.log(err))
+    //         .finally(()=>setLoading(false))                 
+    //     }
+    // }, [categoriaId])
 
 
     console.log('En item list')
