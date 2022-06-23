@@ -39,7 +39,7 @@ export default function ItemList({categoriaId}) {
         useEffect(() => {
             const db = getFirestore();
             const queryCollection = collection(db, 'items');
-            console.log(categoriaId)
+            //console.log(categoriaId)
             if (!categoriaId) {
                 getDocs(queryCollection)
                 .then(resp => resp.docs.map(el => ({id: el.id, ...el.data()})))
@@ -88,8 +88,8 @@ export default function ItemList({categoriaId}) {
     // }, [categoriaId])
 
 
-    console.log('En item list')
-    console.log(categoriaId)
+    //console.log('En item list')
+    //console.log(categoriaId)
     //console.log(producto)
     return (
 

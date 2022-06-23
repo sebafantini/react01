@@ -25,11 +25,11 @@ export default function ItemDetail({producto}) {
 
     function onAdd(quantity) {        
         setInputType('buyButtons');
-        console.log(quantity)
+        //console.log(quantity)
         //addToCart( { ...prod, cantidad: quantity } )        
         addToCart( { ...producto, cantidad: quantity } )        
     }
-    console.log(cartList)
+    //console.log(cartList)
 
     // useEffect(() => {
     //     getFetch()  // fetch llamada a una api  
@@ -64,7 +64,7 @@ export default function ItemDetail({producto}) {
                         Precio: ${producto.price}
                     </Card.Text>
                     {inputType === 'itemCount' ?
-                        <ItemCount stockDisponible={5} cantidadInicial={1} onAdd={onAdd}/>:
+                        <ItemCount stockDisponible={producto.stock} cantidadInicial={1} onAdd={onAdd}/>:
                         <BuyButtons/>}                                                        
 
                 </Card.Body>

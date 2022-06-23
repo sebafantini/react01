@@ -6,7 +6,7 @@ export default function FormContainer() {
     const titulo ='titulo de form';
     const subTitulo ='subTitulo de form';
     function saludo() {
-        console.log('saludo')
+        //console.log('saludo')
       }    
   return (
     <>

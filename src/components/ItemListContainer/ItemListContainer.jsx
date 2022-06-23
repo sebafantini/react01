@@ -8,16 +8,17 @@ export default function ItemListContainer({greeting}) {
 
   const{categoriaId} = useParams()
 
-  console.log(categoriaId)
+  //console.log(categoriaId)
 
   function onAdd(cantidad){
-    console.log('Se seleccionaron ' , cantidad, 'unidades')
+    //console.log('Se seleccionaron ' , cantidad, 'unidades')
   }  
   
   return (
     <div class="container-fluid">
-      <h3>Este es el ItemListContainer </h3>
-      <h2>{greeting}</h2>
+      <h3>Seleccione alguna opción de nuestro Menú</h3>
+      
+      {/*<h2>{greeting}</h2>*/}
       <ItemList categoriaId={categoriaId}/>
       {
       /*

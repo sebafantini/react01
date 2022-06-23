@@ -25,7 +25,7 @@ export default function ItemDetailContainer() {
   
   return (
     <div>
-    <h3>Este es el ItemDetailContainer </h3>
+    <h3>Detalle del plato elegido</h3>
     
     {/* <ItemDetail detalleId = {detalleId}/> */}
     
